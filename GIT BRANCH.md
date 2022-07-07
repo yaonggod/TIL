@@ -8,19 +8,19 @@ master 말고 다른 영역(branch)에서 작업 후 병합
 git branch (branch name)
 ```
 
-1. 브랜치 조회
+2. 브랜치 조회
 
 ```bash
 git branch
 ```
 
-1. 브랜치 이동
+3. 브랜치 이동
 
 ```bash
 git checkout (branch name)
 ```
 
-1. 브랜치 생성 후 이동
+4. 브랜치 생성 후 이동
 
 ```bash
 git checkout -b (branch name)
@@ -28,13 +28,13 @@ git checkout -b (branch name)
 
 브랜치에서 작업 → add → commit 이후
 
-1. 브랜치 병합 (master에서 실행)
+5. 브랜치 병합 (master에서 실행)
 
 ```bash
 git merge (branch name)
 ```
 
-1. 브랜치 지우기
+6. 브랜치 지우기
 
 ```bash
 git branch -d (branch name)
@@ -42,7 +42,7 @@ git branch -d (branch name)
 
 작업 완료하고 브랜치를 병합하면 브랜치에서 작업한 내용이 master에 합쳐지므로 지워도 작업한 내용은 master에 남아있음
 
-1. 그래프 형태로 log 확인하기
+7. 그래프 형태로 log 확인하기
 
 ```bash
 git log --oneline --graph
@@ -113,5 +113,5 @@ git log --oneline --graph
 (master|MERGING) $ git add .
 (master|MERGING) $ git commit
 
-(master) $ git branch -d feature/about
+(master) $ git branch -d feature/test
 ```
