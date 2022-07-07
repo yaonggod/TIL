@@ -4,7 +4,7 @@
 
 작업을 하고 → 변경된 파일을 모아 → 버전으로 남긴다
 
-modified → staged → committed
+working directory →( add )→ staging area →( commit )→ repository →( push/pull )→ remote repository
 
 ```bash
 git init 
@@ -14,6 +14,7 @@ git add .
 git add 파일
 git rm 파일
 git restore 파일 - 변경 사항 취소
+git restore --staged 파일 - add된 사항 취소
 git commit -m “커밋 메시지”
 - 버전 기록
 git status
