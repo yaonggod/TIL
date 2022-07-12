@@ -18,7 +18,9 @@
 - [github flow](./GITHUB%20FLOW.md)
 
 ## 0711
-
 - [파이썬 기초 문법](./%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EA%B8%B0%EC%B4%88%20%EB%AC%B8%EB%B2%95.md)
 - [파이썬 기본 자료형](./%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EA%B8%B0%EB%B3%B8%20%EC%9E%90%EB%A3%8C%ED%98%95.md)
 - [파이썬 컨테이너](./%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88.md)
+
+## 0712
+- [파이썬 제어문](./%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%A0%9C%EC%96%B4%EB%AC%B8.md)
