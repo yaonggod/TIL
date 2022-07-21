@@ -145,3 +145,78 @@ for i in range(t):
 	print("#{}".format(i + 1), water(test_case[i][0], test_case[i][1], test_case[i][2], test_case[i][3], test_case[i][4]))
 ```
 
+## [1288. 새로운 불면증 치료법](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV18_yw6I9MCFAZN&categoryId=AV18_yw6I9MCFAZN&categoryType=CODE&problemTitle=1288&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=2&pageSize=10&pageIndex=1)
+
+```python
+t = int(input())
+test_case = []
+for i in range(1, t + 1):
+    n = int(input())
+    # 0부터 9까지 숫자를 세는 사전
+    count = {k : 0 for k in range(10)}
+    a = n
+    # 사전에 0이 없을때까지 n에 a를 더함
+    while 0 in list(count.values()):
+        for i in range(len(str(n))):
+            count[int(str(n)[i])] += 1
+        if 0 not in list(count.values()):
+            break
+        n += a
+    test_case.append(n)
+for i in range(t):
+    print("#{}".format(i + 1), test_case[i])
+```
+
+## [1989. 초심자의 회문 검사](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV5PyTLqAf4DFAUq&categoryId=AV5PyTLqAf4DFAUq&categoryType=CODE&problemTitle=1989&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=2&pageSize=10&pageIndex=1)
+
+```python
+def palindrome(word : str):
+    for i in range(len(word) // 2):
+        if word[i] != word[len(word) - i - 1]:
+            return 0
+    return 1
+
+t = int(input())
+test_case = []
+for i in range(t):
+    word = input()
+    test_case.append(palindrome(word))
+    
+for i in range(t):
+    print("#{}".format(i + 1), test_case[i])
+```
+
+## [1976. 시각 덧셈](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV5PttaaAZIDFAUq&categoryId=AV5PttaaAZIDFAUq&categoryType=CODE&problemTitle=1976&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=2&pageSize=10&pageIndex=1)
+
+```python
+t = int(input())
+for i in range(1, t + 1):
+    h1, m1, h2, m2 = map(int, input().split())
+    h = h1 + h2
+    m = m1 + m2
+    if m >= 60:
+        h += 1
+        m -= 60
+    if h > 12:
+        h -= 12
+    print("#{}".format(i), h, m)
+```
+
+## [1926. 간단한 369게임](https://swexpertacademy.com/main/code/problem/problemDetail.do?problemLevel=2&contestProbId=AV5PTeo6AHUDFAUq&categoryId=AV5PTeo6AHUDFAUq&categoryType=CODE&problemTitle=1926&orderBy=FIRST_REG_DATETIME&selectCodeLang=ALL&select-1=2&pageSize=10&pageIndex=1)
+
+```python
+n = int(input())
+def count_369(n : int):
+    count = 0
+    for i in range(len(str(n))):
+        if str(n)[i] == '3' or str(n)[i] == '6' or str(n)[i] == '9':
+            count += 1
+    return count
+
+for i in range(1, n + 1):
+    if count_369(i) == 0:
+        print(i, end = " ")
+    else:
+        print("-" * count_369(i), end = " ")
+```
+
