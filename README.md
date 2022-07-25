@@ -1,7 +1,8 @@
 # TIL
 
 ## 푼 문제들
-
+- [프로젝트](./%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/)
+- [알고리즘](./01-ALGORITHM/)
 - [파이썬 기초 100제](./%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EA%B8%B0%EC%B4%88%20100%EC%A0%9C.md)
 - [파이썬 실습 문제](./%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%8B%A4%EC%8A%B5%20%EB%AC%B8%EC%A0%9C.md)
 - [SWEA 실습 문제](./SWEA%20%EC%8B%A4%EC%8A%B5%20%EB%AC%B8%EC%A0%9C.md)
