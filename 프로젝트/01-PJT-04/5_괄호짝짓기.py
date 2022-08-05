@@ -1,7 +1,7 @@
-import sys
+# import sys
 
-sys.stdin = open("_괄호짝짓기.txt")
-for x in range(1, 11):
+# sys.stdin = open("_괄호짝짓기.txt")
+for x in range(1, 2):
     length = int(input())
     gwalho = input()
     # 스택을 4개 만들어서 4가지 종류의 괄호 관리
@@ -28,21 +28,25 @@ for x in range(1, 11):
             try:
                 stack_1.pop()
             except:
+                stack_1.append(')')
                 break
         elif gwalho[i] == ']':
             try:
                 stack_2.pop()
             except:
+                stack_2.append(']')
                 break
         elif gwalho[i] == '}':
             try:
                 stack_3.pop()
             except:
+                stack_3.append('}')
                 break
         else:
             try:
                 stack_4.pop()
             except:
+                stack_4.append('>')
                 break
     # 모든 스택이 비어있을 시에만 True로 설정
     if len(stack_1) == len(stack_2) == len(stack_3) == len(stack_4) == 0:
