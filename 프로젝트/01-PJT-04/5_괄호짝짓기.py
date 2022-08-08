@@ -1,7 +1,7 @@
 # import sys
 
 # sys.stdin = open("_괄호짝짓기.txt")
-for x in range(1, 2):
+for x in range(1, 11):
     length = int(input())
     gwalho = input()
     # 스택을 4개 만들어서 4가지 종류의 괄호 관리
