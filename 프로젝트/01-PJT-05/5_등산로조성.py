@@ -59,9 +59,6 @@ for i in range(1, t + 1):
                             # 백트래킹
                             backtracking(nx, ny, route[-1][2] - 1, 1) 
                             route.pop()  
-            # 다음 좌표가 될 수 없다
-            else:
-                continue
         
         return max(route_list)
         

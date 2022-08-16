@@ -6,6 +6,7 @@
 - [파이썬 기초 100제](./%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EA%B8%B0%EC%B4%88%20100%EC%A0%9C.md)
 - [파이썬 실습 문제](./%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%EC%8B%A4%EC%8A%B5%20%EB%AC%B8%EC%A0%9C.md)
 - [SWEA 실습 문제](./SWEA%20%EC%8B%A4%EC%8A%B5%20%EB%AC%B8%EC%A0%9C.md)
+- [데이터베이스](./%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4/)
 
 ## 0705
 
@@ -77,3 +78,6 @@
 
 ## 0811
 - [코딩 테스트 준비 2](./%EC%BD%94%EB%94%A9%20%ED%85%8C%EC%8A%A4%ED%8A%B8%20%EC%A4%80%EB%B9%84%202%20(%EA%B8%B0%EB%B3%B8).md)
+
+## 0816
+- [데이터베이스](./%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4.md)
