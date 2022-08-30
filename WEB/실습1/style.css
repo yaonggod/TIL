@@ -1,0 +1,30 @@
+/* 아래에 CSS를 작성해주세요. */
+.head {
+    text-align: center;
+    line-height: 20px;
+}
+.all_about {
+    font-size: 12px;
+}
+.cards {
+    width: 900px;
+}
+.card {
+    width: 300px;
+    display: inline-block;
+    margin: 5px;
+}
+.image {
+    width: 290px;
+    border-radius: 5%;
+}
+.install {
+    font-size: 10px;
+    margin: 10px 0px;
+}
+.guide {
+    margin : 10px 0px 20px 0px;
+}
+.exp {
+    font-size: 10px;
+}
