@@ -14,7 +14,7 @@
   - normal flow 유지
   - 레이아웃에서 요소가 차지하는 공간은 static일때와 같음(normal position 대비 offset)
 
-![relative](CSS2.assets\relative.png)
+![relative](CSS2.assets\relative.jpg)
 
 - absolute : 절대 위치
   - 요소가 일반적인 문제 흐름에서 제거된 후 레이아웃에 공간을 차지하지 않음
