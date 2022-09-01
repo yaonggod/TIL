@@ -1,8 +1,65 @@
+.container {
+    position: fixed;
+    padding: 20px 0;
+    background-color: cadetblue;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center-between;
+    display: block;
+    margin: -8px;
+    width: 1500px;
+    top: 0;
+    overflow-x: scroll;
+}
+a { 
+    text-decoration: none;
+    color: black;
+}
+.up {
+    position: fixed;
+    background-color: blue;
+    bottom: 0;
+    right: 0;
+    padding: 15px
+}
+.site{
+    font-size: 24px;
+    margin: 15px;
+    padding: 15px;
+}
+.site :hover {
+    color: skyblue;
+}
+.aa {
+    margin: 15px;
+    padding: 15px;
+}
+.aa :hover{
+    color: skyblue;
+}
+.cards {
+    margin-top: 72px;
+    width: 1500px;
+    display: flex;
+    background-color: beige;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+}
 .card {
     width: 300px;
+    display: inline-block;
+    margin: 20px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 3%;
+    box-shadow: 5px 5px 5px gray;
+    touch-action: manipulation;
+    cursor: pointer;
 }
 .img {
-    width: 290px;
+    width: 300px;
     border-radius: 3%;
 }
 .brand {
