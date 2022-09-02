@@ -1,0 +1,206 @@
+.item{
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: flex-end;
+  height: 80px;
+  padding-left: 40px;
+  padding-right: 40px;
+  align-items: center;
+  background-color: white;
+}
+
+.item-list{
+  display: flex;
+  list-style: none;
+  margin: -1rem;
+}
+
+.nav-item{
+  margin: 10px;
+}
+.abc:hover {
+  color: salmon;
+  background-color: white;
+  text-decoration: none;
+}
+
+.abc {
+  color: black
+}
+
+.logo-img{
+  height: 60px;
+  position: fixed;
+  top: 10px;
+  left: 0;
+  z-index: 1;
+}
+
+.list-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.banner {
+  background-image: url(../images/background.jpg);
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 320px;
+  align-items: center;
+}
+
+.genreandmovie {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 80px;
+}
+.genre-container {
+  width: 20%;
+  padding-top: 32px;
+  padding-left: 24px;
+}
+
+.genre-list {
+  padding: 1rem;
+}
+.genre {
+  list-style: none;
+  padding: 1rem;
+}
+.genre:hover {
+  background-color: aquamarine;
+}
+.movie{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  background-color: azure;
+}
+.title-section{
+  width: 100%;
+  text-align: center;
+  padding: .5rem;
+}
+
+.img-list{
+  display: flex;
+  padding: auto;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  
+
+}
+.card{
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: bisque;
+  margin: 1%;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px gray;
+  position: relative;
+}
+.card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.card:hover .card-img {
+  filter: brightness(0.9) blur(3px) grayscale(100%) ;
+}
+
+.card-img{
+  width: 98%;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 5px gray;
+}
+.content{
+  width: 100%;
+  height: 5%;
+  text-align: center;
+  padding: .5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0
+}
+
+.ticket {
+  position: absolute;
+  visibility: hidden;
+  color: white;
+  top: 40%;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.rank {
+  position: absolute;
+  color: white;
+  bottom: 7%;
+  left: 3%;
+  font-size: 5rem;
+  font-weight: bold;
+  font-style: italic;
+}
+.card:hover .ticket {
+  visibility: visible;
+  border: 2px solid white;
+}
+.card:hover .rank {
+  visibility: hidden;
+}
+.rate {
+  position: absolute;
+  color: white;
+  top: 2%;
+  right: 2%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: red;
+  border-radius: 0.2rem;
+  padding: 0.2rem 0.4rem;
+}
+.card:hover .rate {
+  visibility: hidden;
+}
+
+.buy-ticket {
+  position: fixed;
+  right: 75px;
+  bottom: 45px;
+  z-index: 1;
+  background: linear-gradient(to right, magenta, orange);
+  opacity: 0.5;
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 2rem;
+  font-weight: bold;
+}
+
+.up {
+  position: fixed;
+  bottom: 45px;
+  right: 5px
+}
+.footer {
+  background-color: black;
+  color: white;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
