@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로또 추천 번호</title>
+  <style>
+    .ball {
+      width: 10rem;
+      height: 10rem;
+      margin: .5rem;
+      background-color: yellowgreen;
+      border-radius: 50%;
+      /* 컨텐츠 중앙, 수직 정렬 */
+      text-align: center;
+      line-height: 10rem;
+      /* 폰트 정리 */
+      font-size: xx-large;
+      font-weight: bold;
+    }
+    .ball-container {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <h1>로또 추천 번호</h1>
+  <input id="numberofballs">
+  <button id="addnumber">번호 추가</button>
+  <button id="lotto-btn">행운 번호 받기</button>
+  <div id="result"></div>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const resultbutton = document.querySelector('#lotto-btn')
+    const addbutton = document.querySelector('#addnumber')
+
+    const given = []
+    addbutton.addEventListener('click', function() {
+        const numberofballs = document.querySelector('#numberofballs')
+        console.log(numberofballs.value)
+        if (given.length >= 6) {
+            alert('그만!!!!!!!!!!!!!!!!')
+            numberofballs.value = ''
+        }
+        else if (Number(numberofballs.value) < 1 || Number(numberofballs.value > 45)) {
+            alert('올바른 값을 입력하세요')
+            numberofballs.value = ''
+        }
+        else if (given.includes(Number(numberofballs.value))) {
+            alert('이미 존재하는 번호입니다')
+            numberofballs.value = ''
+        }
+        else {
+            given.push(Number(numberofballs.value))
+            numberofballs.value = ''
+        }
+        console.log("given")
+        console.log(given)
+    })
+    
+
+
+    resultbutton.addEventListener('click', function() {
+        // 컨테이너를 만들고
+        const ballContainer = document.createElement('div')
+        ballContainer.classList.add('ball-container')
+        // 빈 배열 선언
+        const numbers = []
+        // 빈 배열에 추가한 숫자들을 push
+        while (given.length > 0) {
+            numbers.push(given.pop())
+        }
+        // 배열을 6자리를 채워서
+        if (numbers.length < 6) {
+            while (numbers.length < 6) {
+                const n = _.sample(_.range(1, 46))
+                if (numbers.includes(n) === false) {
+                    numbers.push(n)
+                }
+            }
+        } 
+
+        // numbers 정렬
+        numbers.sort(function (a, b) {
+            return a - b
+        })
+        console.log(numbers)
+
+        for (let i=0; i < numbers.length; i++) {
+            const ball = document.createElement('div')
+            ball.classList.add('ball')
+            ball.innerText = numbers[i]
+            // 로또 공은 5가지 색깔로 되어 있습니다.
+            // 1번부터 10번까지는 노란색입니다.
+            // 11번 부터 20번까지는 파란색입니다.
+            // 21번부터 30번까지는 빨간색입니다.
+            // 31번부터 40번까지는 검은색입니다.
+            // 41번부터 45번까지는 초록색입니다.
+            if (ball.innerText <= 10) {
+                ball.style.backgroundColor = 'yellow'
+            }
+            else if (ball.innerText <= 20) {
+                ball.style.backgroundColor = 'blue'
+                ball.style.color = 'white'
+            }
+            else if (ball.innerText <= 30) {
+                ball.style.backgroundColor = 'red'
+            }
+            else if (ball.innerText <= 40) {
+                ball.style.backgroundColor = 'black'
+                ball.style.color = 'white'
+            }
+            else {
+                ball.style.backgroundColor = 'green'
+            }
+            
+            // 컨테이너에 붙인다.
+            ballContainer.appendChild(ball)
+        }
+        
+        // 컨테이너를 결과 영역에 붙인다. 
+        const result = document.querySelector('#result')
+        result.appendChild(ballContainer)
+        
+    })
+
+
+  </script>
+</body>
+</html>
