@@ -126,3 +126,7 @@
 
 ## 0919
 - [JS Event](/JavaScript%20Event.md)
+
+## 0921
+- [Web, Django](./Web%2C%20Django.md)
+- [서버](/%EC%84%9C%EB%B2%84.md)
