@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>로또 번호 추천</h1>
+    {% for lotto in lottos %}
+        {% for n in lotto %}
+            {% if forloop.counter0 == 6 %} 
+                <p>보너스 번호 {{ n }}</p>
+            {% elif forloop.counter0 == 7 %} 
+                <p>결과 {{ n }}</p>
+            {% else %}   
+                <span>{{ n }}</span>
+            {% endif %}
+        {% endfor %} 
+        <br>
+    {% endfor %}
+</body>
+</html>

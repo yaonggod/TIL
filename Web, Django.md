@@ -77,6 +77,8 @@
   
   # 프로젝트 생성
   $ django-admin startproject 프로젝트명 .
+  # 프로젝트 폴더로 진입
+  $ cd 프로젝트명
   # 서버 실행
   $ python manage.py runserver
   # 애플리케이션 생성 - 애플리케이션명은 복수형으로 작성 권장

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Template</h1>
+    <p>{{ numbers }}</p>
+    {% for number in numbers %}
+    <p>
+        {% if number != 2 %}
+            <p>{{ number }} 2가 아님</p>
+        {% else %}
+            <p>{{ number }} 2가 맞음</p>
+        {% endif %}
+    </p>
+    {% endfor %}
+    
+</body>
+</html>
