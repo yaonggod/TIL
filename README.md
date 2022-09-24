@@ -8,6 +8,7 @@
 - [SWEA 실습 문제](./SWEA%20%EC%8B%A4%EC%8A%B5%20%EB%AC%B8%EC%A0%9C.md)
 - [데이터베이스](./%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4/)
 - [WEB](./WEB/)
+- [Django](./django/)
 
 ## 0705
 
@@ -130,3 +131,4 @@
 ## 0921
 - [Web, Django](./Web%2C%20Django.md)
 - [서버](/%EC%84%9C%EB%B2%84.md)
+-
