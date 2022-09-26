@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>궁합보기</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <style>
+        .container {
+            width: 500px;
+            margin-top: 20px
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>나와 NCT의 궁합은?</h1>
+    <div class="container">
+        <form action="/nctmatch" method="GET">
+            내 이름 <input type="text" name="me" style="width:200px; margin: 10px 0 10px 0;">
+            <br>
+            <input type="text" name="name" style="width:200px; margin-right: 10px margin: 10px 0 10px 0;">아 사랑해!
+            <input type="submit" style="margin: 10px 0 10px 0;">    
+            <select class="form-select" style="width:200px; margin: 10px 0 10px 0; display: inline" name="nct">
+                <option selected></option>
+                <option value="태일">태일</option>
+                <option value="쟈니">쟈니</option>
+                <option value="태용">태용</option>
+                <option value="유타">유타</option>
+                <option value="쿤">쿤</option>
+                <option value="도영">도영</option>
+                <option value="텐">텐</option>
+                <option value="재현">재현</option>
+                <option value="윈윈">윈윈</option>
+                <option value="정우">정우</option>
+                <option value="루카스">루카스</option>
+                <option value="마크">마크</option>
+                <option value="샤오쥔">샤오쥔</option>
+                <option value="헨드리">헨드리</option>
+                <option value="런쥔">런쥔</option>
+                <option value="제노">제노</option>
+                <option value="해찬">해찬</option>
+                <option value="재민">재민</option>
+                <option value="양양">양양</option>
+                <option value="쇼타로">쇼타로</option>
+                <option value="성찬">성찬</option>
+                <option value="천러">천러</option>
+                <option value="지성">지성</option>
+            </select>아 사랑해!
+            <input type="submit" style="margin: 10px 0 10px 0;">
+            
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+

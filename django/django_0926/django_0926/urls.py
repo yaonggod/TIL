@@ -1,4 +1,4 @@
-"""firstpjt URL Configuration
+"""django_0926 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from practices import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/', views.index),
+    path('ping/', views.ping),
+    path('pong/', views.pong),
+    path('nct/', views.nct),
+    path('nctmatch/', views.nctmatch),
+    path('is_odd_even/<int:number>', views.is_odd_even),
+    path('calculate/<int:n1>/<int:n2>', views.calculate),
+    path('lorem/', views.lorem),
+    path('lorem_result/', views.lorem_result),
+    
 ]
