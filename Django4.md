@@ -73,5 +73,54 @@
   return render(request, 'articles/index.html')
   ```
 
+- 코드 변수화 하기 -> 다른 앱에서 이름이 중복될 가능성 높음
 
-- BASE_DIR
+  ```python
+  # articles/urls.py
+  urlpatterns = [
+      path('index/', views.index, name='index')
+  ]
+  ```
+
+  ```html
+  # index.html
+  <a href="{% url 'index' %}"></a>
+  ```
+
+## URL namespace
+
+- app_name attribute를 작성해 URL namespace를 설정
+
+```python
+# articles/urls.py
+app_name = 'articles'
+urlpatterns = [
+    path('index/', views.index, name='index')
+]
+```
+
+```html
+# index.html
+<a href="{% url 'articles:index' %}"></a>
+```
+
+## 마무리
+
+- DRY 원칙
+  - Don't  Repeat Yourself
+  - 소스 코드에서 동일한 코드를 반복하지 말자
+  - 동일한 코드를 반복한다는 것은 잠재적인 버그의 위협을 증가시키고 애플리케이션의 유지 보수 비용이 커짐
+
+- Django의 설계 철학(Template System)
+  1. 표현(template)과 로직(view)을 분리
+     - 템플릿 시스템은 표현을 제어하는 도구이자 표현에 관련된 로직일 뿐
+     - 템플릿 시스템은 이러한 기본 목표를 넘어서는 기능을 지원하지 말아야 함
+  2. 중복을 배제
+     - 대다수의 동적 웹사이트는 공통 header, footer, navbar 같은 사이트 공통 디자인을 가짐
+     - Django 템플릿 시스템은 이러한 요소를
+- Framework의 성격
+  - 독선적(Opinionated)
+  - 관용적(Unopinionated)
+
+
+

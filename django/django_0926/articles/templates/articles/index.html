@@ -17,7 +17,7 @@
         {% endfor %}
     </div>
     <div>
-        <form action="/articles/create/" method="GET">
+        <form action="{% url 'articles:create' %}" method="GET">
             <input type="text" name="content">
             <input type="submit">
         </form>

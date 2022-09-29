@@ -8,8 +8,9 @@
 </head>
 <body>
     <h1>작성 완료</h1>
-    <p>작성 내용 : {{ content }}</p>
-    {% comment %} <a href="/articles">홈으로</a> {% endcomment %}
-    <a href="{% url 'articles:index' %}">홈으로</a>
+    <p>제목: {{ title }}</p>
+    <p>내용: {{ content }}</p>
+
+    <a href="{% url 'posts:index' %}">목록으로</a>
 </body>
 </html>

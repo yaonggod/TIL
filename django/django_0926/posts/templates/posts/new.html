@@ -7,9 +7,14 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>작성 완료</h1>
-    <p>작성 내용 : {{ content }}</p>
-    {% comment %} <a href="/articles">홈으로</a> {% endcomment %}
-    <a href="{% url 'articles:index' %}">홈으로</a>
+    <h1>New</h1>
+    <form action="{% url 'posts:create' %}" method="GET">
+        제목: <input name="title">
+        <br>
+        내용: <input name="content">
+        <br>
+        <input type="submit">
+    </form>
+
 </body>
 </html>
