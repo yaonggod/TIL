@@ -74,6 +74,8 @@
   ```bash
   $ pip install django==3.2.13
   $ pip list
+  # 현재 있는 패키지 목록 저장
+  $ pip freeze > requirements.txt
   
   # 프로젝트 생성
   $ django-admin startproject 프로젝트명 .
