@@ -1,4 +1,4 @@
-# Django5
+Django5
 
 ## Django's Design Pattern
 
@@ -31,10 +31,26 @@
   - 필드와 레코드를 사용해 조직된 데이터 요소들의 집합
   - 필드 : 속성, 컬럼
   - 레코드 : 튜플, 행
-- PK(Primary Key)
-- 쿼리(Query)
+- PK(Primary Key) : 각 레코드의 고유한 값
+- 쿼리(Query) : 조건에 맞는 데이터를 조회하거나 조작하는 명령어
 
 ### Model
+
+- 새 프로젝트, 앱 작성 및 앱 등록
+
+```bash
+$ django-admin startproject crud .
+$ python manage.py startapp articles
+```
+
+```python
+# settings.py
+INSTALLED_APPS = [
+    'articles',
+]
+```
+
+- models.py 작성
 
 ```python
 # articles/models.py
@@ -44,8 +60,18 @@ class Article(models.Model):
     content = models.TextField()
 ```
 
-- `TextField()`
-- `CharField()`
+  1. 각 모델은 django.models.Model 클래스의 서브 클래스
+
+  2. models 모듈을 통해 어떠한 타입의 DB필드를 정의할 것인지 정의
+
+  3. 클래스 변수명 : DB 필드의 이름
+
+  4. 클래스 변수 값 : DB 필드의 데이터 타입
+
+     - `TextField()` : 글자의 수가 많을 때 사용
+
+     - `CharField()` : 길이의 제한이 있는 문자열을 넣을 때 사용
+
 - 데이터베이스 스키마를 실제 데이터베이스에 반영하기 위한 과정이 필요
 
 ### Migration
