@@ -132,5 +132,20 @@
 - [Web, Django](./Web%2C%20Django.md)
 - [서버](/%EC%84%9C%EB%B2%84.md)
 
+## 0922
+- [Django2](./Django2.md)
+
+## 0926
+- [Django3](./Django3.md)
+
 ## 0927
 - [Django4](./Django4.md)
+
+## 0928
+- [Django5](./Django5.md)
+
+## 0929
+- Django6
+
+## 1004
+- [Django7](./Django7.md)

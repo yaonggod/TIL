@@ -135,4 +135,56 @@ f.save()
       return render(request, 'articles/edit.html', context)
   ```
 
+
+## Handling HTTP requests
+
+- Create
+
+  - new와 create함수를 합침, request.method값을 기준으로 나뉨
+
+  ```python
+  # articles/views.py
+  def create(request):
+      if request.method == 'POST':
+          form = ArticleForm(request.POST)
+          if form.is_valid():
+              article = form.save()
+              return redirect('articles:detail', article.pk)
+      else:
+          form = ArticleForm()
+      context = {'form': form,}
+      return render(request, 'articles/create.html', context)      
+  ```
+
+  ```html
+  <!-- articles/create.html -->
+  <form action="{% url 'articles:create' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit">
+  </form>
+  ```
+
+- edit
+
+  - edit과 update함수를 합침
+
+  ```python
+  # articles/views.py
+  def update(request, pk):
+      article = Article.objects.get(pk=pk)
+      if request.method == 'POST':
+          form = ArticleForm(request.post, instance=article)
+         	if form.is_valid():
+              form.save()
+              return redirect('articles:detail', article.pk)
+      else:
+          form = ArticleForm(instance=article)
+      context = {
+          'form': form,
+          'article': article,
+      }
+      return render(request, 'articles/update.html', context)       
+  ```
+
   
