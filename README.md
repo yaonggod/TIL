@@ -149,3 +149,9 @@
 
 ## 1004
 - [Django7](./Django7.md)
+
+## 1005
+- [Django8](./Django8.md)
+
+## 1011
+- [Django Auth](./Django%20Auth.md)
