@@ -1,0 +1,29 @@
+{% load django_bootstrap5 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% bootstrap_css %}
+    {% block css %}{% endblock css %}
+</head>
+<body>
+    {% load static %}
+    <nav class='navbar bg-dark text-white'>
+        <div class="container-fluid justify-content-start">
+            <a class="navbar-brand" href="{% url 'movies:index' %}">
+              <img src="{% static 'images/슈렉-removebg.png' %}" alt="Logo" width="auto" height="24" class="d-inline-block align-text-top">
+            </a>
+            <a class="nav-link mx-1" href="{% url 'movies:index' %}">목록</a>
+            <a class="nav-link mx-1" href="{% url 'movies:create' %}">글쓰기</a>
+        </div>
+    </nav>
+
+    <div class='container'>
+        {% block body %}{% endblock body %}
+    </div>
+    {% bootstrap_javascript %}
+</body>
+</html>

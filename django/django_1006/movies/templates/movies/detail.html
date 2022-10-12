@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block body %}
+<h1 class='text-center fw-bolder my-3'>{{ movie.title }}</h1>
+<div class='border border-dark p-3 my-3' style="height: 500px;">
+    <p>{{ movie.summary }}</p>
+</div>
+
+<form class='d-flex justify-content-end' action="{% url 'movies:delete' movie.pk %}" method='POST'>
+    {% csrf_token %} 
+    <a class='btn btn-outline-dark mx-1' href="{% url 'movies:update' movie.pk %}">수정하기</a>
+    <input class='btn btn-outline-dark mx-1' type='submit' value='삭제'>
+</form>
+{% endblock %}

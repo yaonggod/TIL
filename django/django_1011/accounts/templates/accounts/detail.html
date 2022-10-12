@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block content %}
+<div class='container border fs-4'>
+    {% if user.is_superuser %}
+    <p>관리자</p>
+    {% endif %}
+    <p>pk : {{ user.id }}<p>
+    <p>username : {{ user.username }}</p>
+    <p>name : {{ user.last_name }}{{ user.first_name }}</p>
+    <p>email : {{ user.email }}</p>
+    <p>date_joined : {{ user.date_joined }}</p>
+    <p>last_login : {{ user.last_login }}</p>
+<div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+<!-- load는 base에서 상속되지 않음-->
+{% load django_bootstrap5 %}
+{% load static %}
+{% block body %}
+
+<div class='d-flex justify-content-center'>
+    <img src="{% static 'images/슈렉.jpg' %}" class='my-3'>
+</div>
+<table class='table'>
+    <thead>
+        <tr class='table-dark'>
+            <th>pk</th>
+            <th>영화 제목</th>
+            <th>러닝 타임</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie.pk }}</td>
+            <td><a class="text-decoration-none" href="{% url 'movies:detail' movie.pk %}"<>{{ movie.title }}</a></td>
+            <td>{{ movie.running_time }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class='d-flex justify-content-end'>
+    <a href={% url 'movies:create' %} class='btn btn-primary justify-content-end'>글쓰기</a>
+</div>
+
+{% endblock %}

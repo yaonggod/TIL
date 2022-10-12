@@ -1,18 +1,30 @@
 <!DOCTYPE html>
+<!-- 장고에 부트스트랩 적용 -->
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!-- 스태틱 파일(이미지, css 등) 가져오기-->
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- CSS static에서 가져오기 -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
 </head>
 <body>
-    <h1>안냥</h1>
-    <a href="{% url 'articles:create' %}">글 쓰기</a>
-    {% for article in articles %}
-    <h3><a href='{% url "articles:detail" article.pk %}'>{{ article.title }}</a></h3>
-    <p>{{ article.created_at}} | {{ article.updated_at }}</p>
-    <hr>
-    {% endfor %}
+    <div class="container text-center">
+        <h1 class="my-3">안냥</h1>
+        <!-- 이미지 static에서 가져오기 -->
+        <img src="{% static 'images/슈렉.jpg' %}"><br>
+        <a class="btn btn-primary my-3" href="{% url 'articles:create' %}">글 쓰기</a>
+        {% for article in articles %}
+        <h3><a class="text-decoration-none" href='{% url "articles:detail" article.pk %}'>{{ article.title }}</a></h3>
+        <p>{{ article.created_at}} | {{ article.updated_at }}</p>
+        <hr>
+        {% endfor %}
+    </div>
 </body>
 </html>
