@@ -1,21 +1,16 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <h1 class="fw-bolder text-center my-3">{{ article.title }}</h1>
-        <p>{{ article.created_at }} | {{ article.updated_at }}</p>
-        <p class="border">{{ article.content }}</p>
-    <a class="btn btn-primary" href="{% url 'articles:update' article.pk %}">수정하기</a>
-    <a class="btn btn-primary" href="{% url 'articles:index' %}">홈으로</a>
-    </div>    
-</body>
-</html>
+{% block content %}
+<div class="container">
+    <h1 class="fw-bolder text-center my-3">{{ article.title }}</h1>
+    <p>{{ article.user_name }} | {{ article.created_at }} | {{ article.updated_at }}</p>
+    <p class="border">{{ article.content }}</p>
+{% if user == article.user %}
+<a class="btn btn-primary" href="{% url 'articles:update' article.pk %}">수정하기</a>
+<a class="btn btn-danger" href="{% url 'articles:delete' article.pk %}">삭제하기</a>
+{% endif %}
+<a class="btn btn-primary" href="{% url 'articles:index' %}">홈으로</a>
+</div>    
+{% endblock%}

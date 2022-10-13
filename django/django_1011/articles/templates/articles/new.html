@@ -1,28 +1,20 @@
-<!DOCTYPE html>
+{% extends 'base.html'%}
 {% load django_bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1 class="text-center">게시글 생성</h1>
-    <form action="{% url 'articles:create' %}" method="POST">
-        {% csrf_token %}
-        <!-- 부트스트랩 폼 -->
-        {% bootstrap_alert "제목과 내용은 1글자 이상 채워주세요" alert_type='warning' %}
-        {% bootstrap_form article_form %}
+{% block content %}
+<h1 class="text-center">게시글 생성</h1>
+<form action="{% url 'articles:create' %}" method="POST">
+    {% csrf_token %}
+    <!-- 부트스트랩 폼 -->
+    {% bootstrap_alert "제목과 내용은 1글자 이상 채워주세요" alert_type='warning' %}
+    {% bootstrap_form article_form %}
 
-        {% comment %} {{ article_form.as_p }} {% endcomment %}
-        <!-- <label for="title">제목 : </label>
-        <input type="text" name="title" id="title" required>
-        <label for="content">내용 : </label>
-        <textarea name="content" id="content" cols="30" rows="10"></textarea> -->
-        {% bootstrap_button button_type="submit" content="제출하기" %}
-    </form>
-</body>
-</html>
+    {% comment %} {{ article_form.as_p }} {% endcomment %}
+    <!-- <label for="title">제목 : </label>
+    <input type="text" name="title" id="title" required>
+    <label for="content">내용 : </label>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea> -->
+    {% bootstrap_button button_type="submit" content="제출하기" %}
+</form>
+{% endblock %}
