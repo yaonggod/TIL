@@ -62,6 +62,9 @@ def change_password(request):
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             form.save()
+            # 암호 변경 시 변경된 암호로 다시 로그인 상태 유지, 즉 세션 무효화 방지하기
+            # from django.contrib.auth import update_session_auth_hash
+            # update_session_auth_hash(request, form.user)
             return redirect('accounts:login')
     else:
         form = PasswordChangeForm(request.user)
