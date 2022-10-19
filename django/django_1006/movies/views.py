@@ -17,7 +17,6 @@ def detail(request, pk):
     return render(request, 'movies/detail.html', context=context)
 
 def create(request):
-    print(request.method)
     if request.method == 'POST':
         movie_form = MovieForm(request.POST)
         if movie_form.is_valid():
@@ -43,7 +42,6 @@ def update(request, pk):
 
 def delete(request, pk):
     movie = Movie.objects.get(pk=pk)
-    print(request.method)
     if request.method == 'POST':
         movie.delete()
         return redirect('movies:index')

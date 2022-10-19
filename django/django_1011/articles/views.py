@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Article 
-from .forms import ArticleForm
+from .models import Article, Comment
+from .forms import ArticleForm, CommentForm
 from django.contrib.auth.decorators import login_required
 # accouts 앱에서 User모델 참조
 from accounts.models import User
@@ -36,8 +36,12 @@ def create(request):
     
 def detail(request, pk):
     article = Article.objects.get(pk=pk)
+    comments = article.comment_set.all()
+    comment_form = CommentForm()
     context = {
-        'article' : article
+        'article' : article,
+        'comments' : comments,
+        'comment_form' : comment_form
     }
     return render(request, 'articles/detail.html', context)    
 
@@ -69,3 +73,39 @@ def delete(request, pk):
             article.delete()
             return redirect('articles:index')
     return redirect('articles:detail', article.pk)
+
+@ login_required
+def comment_create(request, pk):
+    article = Article.objects.get(pk=pk)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.article = article
+            comment.user = request.user
+            comment.save()
+            return redirect('articles:detail', pk)
+    else:
+        comment_form = CommentForm()
+    context = {'comment_form' : comment_form}
+    return render(request, 'articles/detail.html', context)
+
+@ login_required
+def comment_update(request, article_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST, instance=comment)
+        if comment_form.is_valid():
+            comment_form.save()
+            return redirect('articles:detail', article_pk)
+    return redirect('articles:detail', article_pk)    
+    
+@ login_required
+def comment_delete(request, article_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.method == 'POST':
+        if comment.user == request.user:
+            comment.delete()
+            return redirect('articles:detail', article_pk)
+    return redirect('articles:detail', article_pk)
+            

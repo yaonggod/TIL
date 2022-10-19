@@ -6,6 +6,11 @@
 <!-- 스태틱 파일(이미지, css 등) 가져오기-->
 {% load static %}
 {% block content %}
+    {% if request.user.is_superuser %}
+    <div class='d-flex justify-content-end m-3'>
+        <a class='btn btn-primary btn-sm' href="{% url 'accounts:index' %}">회원 리스트</a>
+    </div>
+    {% endif %}
     <div class="container text-center">
         <h1 class="my-3">안냥</h1>
         <!-- 이미지 static에서 가져오기 -->
@@ -13,7 +18,7 @@
         <a class="btn btn-primary my-3" href="{% url 'articles:create' %}">글 쓰기</a>
         {% for article in articles %}
         <h3><a class="text-decoration-none" href='{% url "articles:detail" article.pk %}'>{{ article.title }}</a></h3>
-        <p>{{ article.user_name }} | {{ article.created_at}} | {{ article.updated_at }}</p>
+        <p>{{ article.user_name }} | {{ article.created_at }} | {{ article.updated_at }} | 댓글 {{ article.comment_set.count }}개</p>
         <hr>
         {% endfor %}
     </div>

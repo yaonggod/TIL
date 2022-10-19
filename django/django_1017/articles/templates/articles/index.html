@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block content %}
+<h1>되냐?</h1>
+{% for article in articles %}
+<a href="{% url 'articles:detail' article.pk %}"><p>{{ article.title }}</p></a>
+<p>{{ article.content }}</p>
+{% if article.image %}
+<img src="{{ article.image.url }}" alt="{{ article.image }}">
+{% endif %}
+{% comment %} {% if article.thumbnail %}
+<img src="{{ article.thumbnail.url }}" alt="{{ article.image }}">
+{% endif %} {% endcomment %}
+{% endfor %}
+<a href="{% url 'articles:create' %}">글 작성</a>
+<a class="btn btn-primary my-3" href="{% url 'articles:create' %}">글 쓰기</a>
+
+{% endblock content %}

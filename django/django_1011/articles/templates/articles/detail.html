@@ -5,12 +5,82 @@
 {% block content %}
 <div class="container">
     <h1 class="fw-bolder text-center my-3">{{ article.title }}</h1>
-    <p>{{ article.user_name }} | {{ article.created_at }} | {{ article.updated_at }}</p>
-    <p class="border">{{ article.content }}</p>
-{% if user == article.user %}
-<a class="btn btn-primary" href="{% url 'articles:update' article.pk %}">수정하기</a>
-<a class="btn btn-danger" href="{% url 'articles:delete' article.pk %}">삭제하기</a>
-{% endif %}
-<a class="btn btn-primary" href="{% url 'articles:index' %}">홈으로</a>
+    <hr>
+    <div class='d-flex justify-content-between'>
+        <span><a class='text-decoration-none' href="{% url 'accounts:detail' article.user.pk %}">{{ article.user_name }}</a></span>
+        <span>{{ article.created_at|date:'y년 m월 d일' }} | {{ article.updated_at|date:'y년 m월 d일' }}</span>
+    </div>
+    <hr>
+    <p class="border p-3" style="height: 500px; overflow:hidden">{{ article.content }}</p>
+    <a class="btn btn-primary" href="{% url 'articles:index' %}">홈으로</a>
+    {% if user == article.user %}
+    <a class="btn btn-primary" href="{% url 'articles:update' article.pk %}">수정하기</a>
+    <a class="btn btn-danger" href="{% url 'articles:delete' article.pk %}">삭제하기</a>
+    {% endif %}
+    <form class='my-3' action="{% url 'articles:comment_create' article.pk %}" method='POST'>
+        {% csrf_token %}
+        {% bootstrap_form comment_form %}
+        {% bootstrap_button button_type="submit" content="댓글 등록하기" %}
+    </form>
+    {% for comment in comments %}
+        <div class='d-flex justify-content-between my-1 border'>
+            {% if comment.user == article.user %}
+            <div class='d-flex justify-content-start'>
+                <span><a class='text-decoration-none' href="{% url 'accounts:detail' comment.user.pk %}">{{ comment.user }}</a></span>
+                <span class="badge text-bg-secondary m-1">작성자</span>
+                <span> | {{ comment.content }}</span>
+            </div>
+            {% else %}
+            <div class='d-flex justify-content-start'>
+                <span><a class='text-decoration-none' href="{% url 'accounts:detail' comment.user.pk %}">{{ comment.user }}</a></span>
+                <span> | {{ comment.content }}</span>
+            </div>
+            {% endif %}
+            {% if request.user == comment.user %}
+            <div>
+                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#comment_update">수정</button>
+                <div class="modal fade" id="comment_update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">댓글 수정하기</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{% url 'articles:comment_update' article.pk comment.pk %}" method='POST'>
+                                {% csrf_token %}
+                                {% bootstrap_form comment_form %}
+                                {% bootstrap_button button_type="submit" content="댓글 수정하기" %}
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#comment_delete">삭제</button>
+                <div class="modal fade" id="comment_delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">댓글 삭제하기</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>정말로 삭제하시겠습니까?</p>
+                            <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method='POST'>
+                                {% csrf_token %}
+                                {% bootstrap_button button_type="submit" content="댓글 삭제하기" %}
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        
+    {% endfor %}
+    <br>
+    
 </div>    
-{% endblock%}
+{% endblock %}
