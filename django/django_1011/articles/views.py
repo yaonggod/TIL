@@ -100,6 +100,7 @@ def comment_update(request, article_pk, comment_pk):
             return redirect('articles:detail', article_pk)
     return redirect('articles:detail', article_pk)    
     
+    
 @ login_required
 def comment_delete(request, article_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)

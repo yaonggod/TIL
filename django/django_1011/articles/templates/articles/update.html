@@ -7,7 +7,7 @@
     {% csrf_token %}
     {% comment %} {{ article_form.as_p }} {% endcomment %}
     {% bootstrap_form article_form %}
-    {% bootstrap_button button_type="submit" content="제출하기" %}
+    {% bootstrap_button button_type="submit" content="수정하기" %}
     {% comment %} <input type="submit" value="수정하기"> {% endcomment %}
     <a class="btn btn-primary" href="{% url 'articles:index' %}">홈으로</a>
 </form>

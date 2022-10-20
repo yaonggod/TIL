@@ -19,20 +19,22 @@
     {% endif %}
     <form class='my-3' action="{% url 'articles:comment_create' article.pk %}" method='POST'>
         {% csrf_token %}
-        {% bootstrap_form comment_form %}
-        {% bootstrap_button button_type="submit" content="댓글 등록하기" %}
+        <div class='row'>
+            <div class='col-11'>{% bootstrap_form comment_form %}</div>
+            <div class='col-1'><input type='submit' class='btn btn-primary' value='댓글쓰기'></div>
+        </div>
     </form>
     {% for comment in comments %}
         <div class='d-flex justify-content-between my-1 border'>
             {% if comment.user == article.user %}
             <div class='d-flex justify-content-start'>
-                <span><a class='text-decoration-none' href="{% url 'accounts:detail' comment.user.pk %}">{{ comment.user }}</a></span>
+                <span class='mx-1'><a class='text-decoration-none' href="{% url 'accounts:detail' comment.user.pk %}">{{ comment.user }}</a></span>
                 <span class="badge text-bg-secondary m-1">작성자</span>
                 <span> | {{ comment.content }}</span>
             </div>
             {% else %}
             <div class='d-flex justify-content-start'>
-                <span><a class='text-decoration-none' href="{% url 'accounts:detail' comment.user.pk %}">{{ comment.user }}</a></span>
+                <span class='mx-1'><a class='text-decoration-none' href="{% url 'accounts:detail' comment.user.pk %}">{{ comment.user }}</a></span>
                 <span> | {{ comment.content }}</span>
             </div>
             {% endif %}
