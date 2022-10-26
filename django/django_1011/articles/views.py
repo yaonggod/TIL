@@ -17,12 +17,11 @@ def index(request):
 @ login_required
 def create(request):
     if request.method == 'POST':
-        article_form = ArticleForm(request.POST)
+        article_form = ArticleForm(request.POST, request.FILES)
         if article_form.is_valid():
             # POST로 받아오고 유효성 검사를 통과하면 입력한 글을 저장하고
             article = article_form.save(commit=False)
             article.user = request.user
-            article.user_name = User.objects.get(pk=request.user.pk).username
             article.save()
             # index로 redirect한다
             return redirect('articles:index')
@@ -52,7 +51,7 @@ def update(request, pk):
         if request.method == 'POST':
             # POST : input 값 가져와서 검증하고 DB에 저장
             # instance는 원래 article 값 넣어두는거 같은데
-            article_form = ArticleForm(request.POST, instance=article)
+            article_form = ArticleForm(request.POST, request.FILES, instance=article)
             if article_form.is_valid():
                 article_form.save()
                 return redirect('articles:detail', article.pk)  
@@ -78,7 +77,7 @@ def delete(request, pk):
 def comment_create(request, pk):
     article = Article.objects.get(pk=pk)
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST)
+        comment_form = CommentForm(request.POST, request.FILES)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
             comment.article = article
@@ -94,7 +93,7 @@ def comment_create(request, pk):
 def comment_update(request, article_pk, comment_pk):
     comment = Comment.objects.get(pk=comment_pk)
     if request.method == 'POST':
-        comment_form = CommentForm(request.POST, instance=comment)
+        comment_form = CommentForm(request.POST, request.FILES, instance=comment)
         if comment_form.is_valid():
             comment_form.save()
             return redirect('articles:detail', article_pk)
@@ -109,4 +108,15 @@ def comment_delete(request, article_pk, comment_pk):
             comment.delete()
             return redirect('articles:detail', article_pk)
     return redirect('articles:detail', article_pk)
+
+@ login_required
+def like(request, article_pk):
+    article = Article.objects.get(pk=article_pk)
+    if request.method == 'POST':
+        if article.like_users.filter(pk=request.user.pk).exists():
+            article.like_users.remove(request.user)
+        else:
+            article.like_users.add(request.user)
+    return redirect('articles:detail', article_pk)
+
             

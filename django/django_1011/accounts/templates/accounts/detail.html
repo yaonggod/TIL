@@ -49,9 +49,21 @@
                 <th scope='row'>마지막 로그인</th>
                 <td>{{ user.last_login|date:'y년 m월 d일 f:s' }}</td>
               </tr>
-              
+              <tr>
+                <th scope='row'>팔로우/팔로잉</th>
+                <td>{{ user.followings.count }}/{{ user.followers.count }}</td>
+              </tr>
             </tbody>
           </table>
+          {% if request.user != user %}
+          <a href="{% url 'accounts:follow' user.pk %}">
+            {% if request.user in user.followers.all %}
+                팔로우 취소
+            {% else %}
+                팔로우
+            {% endif %}
+          </a>
+          {% endif %}
         </div>
         <div class='modal-footer'>
           <div class='container d-flex justify-content-between my-3'>

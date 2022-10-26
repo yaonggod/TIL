@@ -11,13 +11,29 @@
         <span>{{ article.created_at|date:'y년 m월 d일' }} | {{ article.updated_at|date:'y년 m월 d일' }}</span>
     </div>
     <hr>
-    <p class="border p-3" style="height: 500px; overflow:hidden">{{ article.content }}</p>
-    <a class="btn btn-primary" href="{% url 'articles:index' %}">홈으로</a>
-    {% if user == article.user %}
-    <a class="btn btn-primary" href="{% url 'articles:update' article.pk %}">수정하기</a>
-    <a class="btn btn-danger" href="{% url 'articles:delete' article.pk %}">삭제하기</a>
+    <div class='border'>
+        <p class="p-3">{{ article.content }}</p>
+        <img class='my-3' src="{{ article.image.url }}" alt="{{ article.image }}">
+    </div>
+    <div class='d-flex justify-content-center my-3 text-danger'>
+        {% if request.user.is_authenticated %}
+        <a class='text-danger text-decoration-none mx-2' href="{% url 'articles:like' article.pk %}">
+        {% if request.user in article.like_users.all %}
+            <i class="bi bi-heart-fill"></i>
+        {% else %}
+            <i class="bi bi-heart"></i>
+        {% endif %}
+        </a>{{ article.like_users.count }}
+    </div>
     {% endif %}
-    <form class='my-3' action="{% url 'articles:comment_create' article.pk %}" method='POST'>
+    <div>
+        <a class="btn btn-primary" href="{% url 'articles:index' %}">홈으로</a>
+        {% if user == article.user %}
+        <a class="btn btn-primary" href="{% url 'articles:update' article.pk %}">수정하기</a>
+        <a class="btn btn-danger" href="{% url 'articles:delete' article.pk %}">삭제하기</a>
+    <div>
+    {% endif %}
+    <form class='my-3' action="{% url 'articles:comment_create' article.pk %}" method='POST' enctype="multipart/form-data">
         {% csrf_token %}
         <div class='row'>
             <div class='col-11'>{% bootstrap_form comment_form %}</div>
@@ -25,7 +41,8 @@
         </div>
     </form>
     {% for comment in comments %}
-        <div class='d-flex justify-content-between my-1 border'>
+    <div class='border'>
+        <div class='d-flex justify-content-between my-1'>
             {% if comment.user == article.user %}
             <div class='d-flex justify-content-start'>
                 <span class='mx-1'><a class='text-decoration-none' href="{% url 'accounts:detail' comment.user.pk %}">{{ comment.user }}</a></span>
@@ -49,7 +66,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="{% url 'articles:comment_update' article.pk comment.pk %}" method='POST'>
+                            <form action="{% url 'articles:comment_update' article.pk comment.pk %}" method='POST' enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {% bootstrap_form comment_form %}
                                 {% bootstrap_button button_type="submit" content="댓글 수정하기" %}
@@ -79,8 +96,11 @@
             </div>
             {% endif %}
         </div>
+        {% if comment.image %}
+        <img src="{{ comment.image.url }}" alt="{{ comment.image }}">
+        {% endif %}
         
-        
+    </div>
     {% endfor %}
     <br>
     

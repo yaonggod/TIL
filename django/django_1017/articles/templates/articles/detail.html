@@ -7,9 +7,9 @@
 {% if article.image %}
 <img src="{{ article.image.url }}" alt="{{ article.image }}">
 {% endif %}
-{% comment %} {% if article.thumbnail %}
+{% if article.thumbnail %}
 <img src="{{ article.thumbnail.url }}" alt="{{ article.thumbnail }}" width='400' height='300'>
-{% endif %} {% endcomment %}
+{% endif %}
 
 <form class='d-flex justify-content-end' action="{% url 'articles:delete' article.pk %}" method='POST'>
     {% csrf_token %} 

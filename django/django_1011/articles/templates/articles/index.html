@@ -11,15 +11,28 @@
         <a class='btn btn-primary btn-sm' href="{% url 'accounts:index' %}">회원 리스트</a>
     </div>
     {% endif %}
-    <div class="container text-center">
-        <h1 class="my-3">안냥</h1>
-        <!-- 이미지 static에서 가져오기 -->
-        <img src="{% static 'images/슈렉.jpg' %}"><br>
-        <a class="btn btn-primary my-3" href="{% url 'articles:create' %}">글 쓰기</a>
+    <div class="container">
+        <div class='text-center'>
+            <h1 class="my-3">안냥</h1>
+            <!-- 이미지 static에서 가져오기 -->
+            <img src="{% static 'images/슈렉.jpg' %}"><br>
+            <a class="btn btn-primary my-3" href="{% url 'articles:create' %}">글 쓰기</a>
+        </div>
         {% for article in articles %}
-        <h3><a class="text-decoration-none" href='{% url "articles:detail" article.pk %}'>{{ article.title }}</a></h3>
-        <p>{{ article.user_name }} | {{ article.created_at }} | {{ article.updated_at }} | 댓글 {{ article.comment_set.count }}개</p>
+        {% if article.thumbnail %}
+        <div class='row'>
+            <div class='col-2'><img style="width:100%; height:auto;" src="{{ article.thumbnail.url }}" alt="{{ article.thumbnail }}"></div>
+            <div class='col-10'>
+                <h3><a class="text-decoration-none" href='{% url "articles:detail" article.pk %}'>{{ article.title }}</a></h3>
+                <p>{{ article.user.username }} | {{ article.created_at }} | {{ article.updated_at }} | 댓글 {{ article.comment_set.count }}개</p>
+            </div>
+        </div>
         <hr>
+        {% else %}
+        <h3><a class="text-decoration-none" href='{% url "articles:detail" article.pk %}'>{{ article.title }}</a></h3>
+        <p>{{ article.user.username }} | {{ article.created_at }} | {{ article.updated_at }} | 댓글 {{ article.comment_set.count }}개</p>
+        <hr>
+        {% endif %}
         {% endfor %}
     </div>
 {% endblock content %}

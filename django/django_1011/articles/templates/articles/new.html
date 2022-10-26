@@ -4,7 +4,7 @@
 {% bootstrap_javascript %}
 {% block content %}
 <h1 class="text-center">게시글 생성</h1>
-<form action="{% url 'articles:create' %}" method="POST">
+<form action="{% url 'articles:create' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- 부트스트랩 폼 -->
     {% bootstrap_alert "제목과 내용은 1글자 이상 채워주세요" alert_type='warning' %}
