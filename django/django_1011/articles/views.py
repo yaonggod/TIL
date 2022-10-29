@@ -109,14 +109,18 @@ def comment_delete(request, article_pk, comment_pk):
             return redirect('articles:detail', article_pk)
     return redirect('articles:detail', article_pk)
 
-@ login_required
+@login_required
 def like(request, article_pk):
     article = Article.objects.get(pk=article_pk)
-    if request.method == 'POST':
-        if article.like_users.filter(pk=request.user.pk).exists():
-            article.like_users.remove(request.user)
-        else:
-            article.like_users.add(request.user)
+    # 만약에 로그인한 유저가 이 글을 좋아요를 눌렀다면,
+    # if article.like_users.filter(id=request.user.id).exists():
+    if request.user in article.like_users.all(): 
+        # 좋아요 삭제하고
+        article.like_users.remove(request.user)
+    else:
+        # 좋아요 추가하고 
+        article.like_users.add(request.user)
+    # 상세 페이지로 redirect
     return redirect('articles:detail', article_pk)
 
             

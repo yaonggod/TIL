@@ -7,7 +7,7 @@
     <h1 class="fw-bolder text-center my-3">{{ article.title }}</h1>
     <hr>
     <div class='d-flex justify-content-between'>
-        <span><a class='text-decoration-none' href="{% url 'accounts:detail' article.user.pk %}">{{ article.user_name }}</a></span>
+        <span><a class='text-decoration-none' href="{% url 'accounts:detail' article.user.pk %}">{{ article.user.username }}</a></span>
         <span>{{ article.created_at|date:'y년 m월 d일' }} | {{ article.updated_at|date:'y년 m월 d일' }}</span>
     </div>
     <hr>

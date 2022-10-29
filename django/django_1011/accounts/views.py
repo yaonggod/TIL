@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
-    users = User.objects.all()
+    users = get_user_model().objects.all()
     context = {'users' : users}
     return render(request, 'accounts/index.html', context)
 
